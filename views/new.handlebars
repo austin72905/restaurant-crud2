@@ -1,0 +1,55 @@
+<h3 class="text-center mt-3">新增喜愛餐廳</h3>
+<form method="POST" action="/restaurants" class="mx-auto mt-3">
+
+  <div class="form-group row">
+    <label for="name" class="col-form-label">餐廳名稱</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="name" id="name" placeholder="請輸入餐廳名稱">
+    </div>
+
+    <label for="rating" class="col-form-label"> 餐廳評分</label>
+    <div class="col-sm-4">
+      <input type="float" class=" form-control" name="rating" id="rating" placeholder="請輸入1~5(滿分)">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="category" class="col-form-label">餐廳類別</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="category" id="category" placeholder="屬於哪種風格">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="image" class="col-form-label">餐廳照片</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="image" id="image" placeholder="請貼上圖片網址">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="location" class="col-form-label">餐廳地址</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="location" id="location" placeholder="請輸入地址">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="phone" class="col-form-label">餐廳電話</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="phone" id="phone" placeholder="ex:03-xxxxxxx">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="description" class="col-form-label">餐廳描述</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="description" id="description" placeholder="形容一下餐廳">
+    </div>
+  </div>
+
+  <div class="mx-auto" style="width: 200px;">
+    <button type="submit" class="btn btn-primary mb-3" style="width:100px">建立</button>
+  </div>
+
+</form>
