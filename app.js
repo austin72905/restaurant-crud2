@@ -3,8 +3,12 @@ const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+//use css file
+app.use(express.static('public'))
 
 //連線到mongodb
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -27,12 +31,17 @@ const Restaurant = require('./models/restaurant')
 //route
 //首頁
 app.get('/', (req, res) => {
-  res.render('index')
+
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.log(err)
+    res.render('index', { restaurants })
+  })
+
 })
 
 //列出全部restaurant
 app.get('/restaurants', (req, res) => {
-  res.send('列出全部restaurant')
+  res.redirect('/')
 })
 
 //新增restaurant 的頁面
