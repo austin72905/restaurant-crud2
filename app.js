@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const exphbs = require('express-handlebars')
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 //連線到mongodb
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -23,7 +27,7 @@ const Restaurant = require('./models/restaurant')
 //route
 //首頁
 app.get('/', (req, res) => {
-  res.send('app')
+  res.render('index')
 })
 
 //列出全部restaurant
