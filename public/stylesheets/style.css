@@ -132,6 +132,14 @@ form {
   width: 50px;
   
 }
+.btn-dark {
+  font-style: 5px;
+  padding: 2px;
+  margin-right: 5px;
+  color: whitesmoke;
+  width: 50px;
+  
+}
 
 .fa-search {
   width:12px;
