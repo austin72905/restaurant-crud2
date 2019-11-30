@@ -75,7 +75,11 @@ app.post('/restaurants', (req, res) => {
 
 //顯示detail 的頁面
 app.get('/restaurants/:id', (req, res) => {
-  res.send('顯示detail 的頁面')
+  Restaurant.findById(req.params.id, (err, detail) => {
+    if (err) return console.log(err)
+    return res.render('detail', { detail })
+  })
+
 })
 
 //修改restaurant 的頁面
