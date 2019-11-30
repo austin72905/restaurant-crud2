@@ -111,6 +111,7 @@ form {
 }
 .f-btn {
   padding: 5px;
+  
 }
 .form-group {
   padding-left: 20px;
@@ -120,4 +121,13 @@ form {
   padding: 2px;
   margin-right: 5px;
   color: whitesmoke;
+ 
+}
+.btn-primary {
+  font-style: 5px;
+  padding: 2px;
+  margin-right: 5px;
+  color: whitesmoke;
+  width: 50px;
+  
 }

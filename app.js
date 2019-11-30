@@ -84,13 +84,38 @@ app.get('/restaurants/:id', (req, res) => {
 
 //修改restaurant 的頁面
 app.get('/restaurants/:id/edit', (req, res) => {
-  res.send('新增restaurant 的頁面')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.log(err)
+    return res.render('edit', { restaurant })
+  })
+
+
 })
 
 //修改restaurant
 app.post('/restaurants/:id/edit', (req, res) => {
-  res.send('修改restaurant')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.log(err)
+
+    restaurant.name = req.body.name
+    restaurant.rating = req.body.rating
+    restaurant.category = req.body.category
+    restaurant.image = req.body.image
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.description = req.body.description
+    //存入資料庫
+    restaurant.save(err => {
+      if (err) return console.log(err)
+      return res.redirect(`/restaurants/${req.params.id}`)
+    })
+
+  })
+
 })
+
+
+
 
 //刪除restaurant
 app.post('/restaurants/:id/delete', (req, res) => {

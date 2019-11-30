@@ -36,9 +36,21 @@
               <span class="badge badge-pill badge-danger font-weight-normal">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
+
               </span>
 
+              <div class="button d-flex flex-row-reverse">
+                <form action="/restaurants/{{this.id}}/delete" method="POST">
+                  <button class="btn btn-warning">delete</button>
+                </form>
+
+                <a href="/restaurants/{{this.id}}/edit" class="btn btn-primary">edit</a>
+              </div>
+
             </div>
+
+
+
           </div>
         </a>
         {{/each}}
