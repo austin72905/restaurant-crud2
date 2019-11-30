@@ -145,3 +145,8 @@ form {
   width:12px;
   height:12px
 }
+.btn-outline-info{
+  position: absolute;
+  right: 150px;
+  top:10px;
+}
