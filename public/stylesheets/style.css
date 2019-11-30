@@ -101,8 +101,9 @@ form {
   width: 80%;
 }
 .fas {
-  font-size: 20px;
+  font-size: 12px;
   padding: 10px;
+  padding-left: 4px;
 }
 .back {
   font-size: 20px;
@@ -130,4 +131,9 @@ form {
   color: whitesmoke;
   width: 50px;
   
+}
+
+.fa-search {
+  width:12px;
+  height:12px
 }

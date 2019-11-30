@@ -119,8 +119,38 @@ app.post('/restaurants/:id/edit', (req, res) => {
 
 //刪除restaurant
 app.post('/restaurants/:id/delete', (req, res) => {
-  res.send('刪除restaurant')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.log(err)
+    restaurant.remove(err => {
+      if (err) return console.log(err)
+      return res.redirect('/')
+    })
+  })
 })
+
+
+//set search route
+app.get(
+  '/search', (req, res) => {
+
+    Restaurant.find((err, restaurants) => {
+
+      if (err) return console.log(err)
+
+      const search = restaurants.filter(
+
+        restaurant => restaurant.name.toLowerCase().includes(req.query.keyword.toLowerCase())
+
+      )
+
+      res.render('index', { restaurants: search, keyword: req.query.keyword })
+    })
+
+
+  }
+)
+
+
 
 
 
