@@ -9,10 +9,20 @@
             value="{{keyword}}" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+
+
           </div>
         </div>
       </form>
+
+
+
+
+
+
     </div>
+
+
   </div>
 </div>
 
@@ -40,7 +50,7 @@
               </span>
 
               <div class="button d-flex flex-row-reverse">
-                <form action="/restaurants/{{this.id}}/delete" method="POST">
+                <form action="/restaurants/{{this.id}}/delete?_method=DELETE" method="POST">
                   <button class="btn btn-warning">delete</button>
                 </form>
 
@@ -54,6 +64,9 @@
           </div>
         </a>
         {{/each}}
+
+
+
 
 
 
