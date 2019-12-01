@@ -110,6 +110,20 @@ router.get(
   }
 )
 
+router.get(
+  '/sort/:sort', (req, res) => {
+
+    const sort = req.params.sort
+    Restaurant.find({})
+      .sort({ rating: `${sort}` })
+      .exec((err, restaurants) => {
+
+        if (err) return console.log(err)
+        res.render('index', { restaurants })
+      })
+  }
+)
+
 
 
 module.exports = router

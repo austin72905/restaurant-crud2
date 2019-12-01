@@ -15,7 +15,22 @@
         </div>
       </form>
 
+      <div class="btn-group">
+        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">排序方式
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
 
+          <li>
+            <a class="dropdown-item" href="/restaurants/sort/-1">評分高到低</a>
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="/restaurants/sort/1">評分低到高</a>
+          </li>
+
+        </ul>
+      </div>
 
 
 
@@ -27,43 +42,45 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
+<div>
 
-        {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
-          <div class="card mb-3">
-            <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
-            <div class="card-body p-3">
-              <h6 class="card-title mb-1">{{this.name}}</h6>
+  <div class="container mt-5 ">
+    <div class="row ">
+      <div class="col-md-10 col-12 mx-auto">
+        <div class="card-columns ">
 
-              <div class="restaurant-category mb-1">
-                <i class="fas fa-utensils pr-2"></i> {{this.category}}
+          {{#each restaurants}}
+          <a href="/restaurants/{{this.id}}" class="text-secondary">
+            <div class="card mb-3">
+              <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+              <div class="card-body p-3">
+                <h6 class="card-title mb-1">{{this.name}}</h6>
+
+                <div class="restaurant-category mb-1">
+                  <i class="fas fa-utensils pr-2"></i> {{this.category}}
+                </div>
+
+                <span class="badge badge-pill badge-danger font-weight-normal">
+                  {{this.rating}}
+                  <i class="fas fa-star fa-xs"></i>
+
+                </span>
+
+                <div class="button d-flex flex-row-reverse">
+                  <form action="/restaurants/{{this.id}}/delete?_method=DELETE" method="POST">
+                    <button class="btn btn-warning">delete</button>
+                  </form>
+
+                  <a href="/restaurants/{{this.id}}/edit" class="btn btn-primary">edit</a>
+                </div>
+
               </div>
 
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{this.rating}}
-                <i class="fas fa-star fa-xs"></i>
 
-              </span>
-
-              <div class="button d-flex flex-row-reverse">
-                <form action="/restaurants/{{this.id}}/delete?_method=DELETE" method="POST">
-                  <button class="btn btn-warning">delete</button>
-                </form>
-
-                <a href="/restaurants/{{this.id}}/edit" class="btn btn-primary">edit</a>
-              </div>
 
             </div>
-
-
-
-          </div>
-        </a>
-        {{/each}}
+          </a>
+          {{/each}}
 
 
 
@@ -74,7 +91,10 @@
 
 
 
+        </div>
       </div>
     </div>
   </div>
+
+
 </div>
