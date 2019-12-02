@@ -4,6 +4,9 @@
 
 ## 下載專案
 
+   ```
+   git clone https://github.com/austin72905/restaurant-crud.git
+   ```
 ## 安裝npm
 
   ```
@@ -21,7 +24,7 @@
 1. 進入models/seeds，以終端機開啟restaurant.js
   
   ```
-  node restaurant.js
+  node restaurantSeeder.js
   ```
   
 
