@@ -160,3 +160,30 @@ form {
   right: 150px;
   top:10px;
 }
+
+.login-here{
+  
+  position: relative;
+  left: 50px;
+}
+
+.password-here{
+  
+  position: relative;
+  left: 50px;
+}
+
+.login-btn{
+  
+  position: relative;
+  left: 70px;
+}
+
+.word-here{
+  
+  position: relative;
+  left: 70px;
+}
+
+
+
