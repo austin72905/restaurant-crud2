@@ -40,7 +40,7 @@ app.use('/', require('./routes/homes'))
 
 app.use('/restaurants', require('./routes/restaurants'))
 
-
+app.use('/users', require('./routes/users'))
 
 
 
