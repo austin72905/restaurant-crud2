@@ -185,5 +185,16 @@ form {
   left: 70px;
 }
 
+.name-here{
+  
+  position: relative;
+  left: 50px;
+}
+
+.confirm-here{
+  
+  position: relative;
+  left: 50px;
+}
 
 
