@@ -18,7 +18,32 @@ router.get('/register', (req, res) => {
 })
 //註冊檢查
 router.post('/register', (req, res) => {
-  res.send('register')
+
+  const name = req.body.name
+  const email = req.body.email
+  const password = req.body.password
+  const password2 = req.body.password2
+
+  User.findOne({ email: email }).then(user => {
+
+    if (user) {
+      console.log('user is already existed')
+      res.render('register', {
+        name, email, password, password2
+      })
+    } else {
+
+      const newUser = new User({
+        name, email, password
+      })
+
+      newUser.save()
+        .then(user => {
+          res.redirect('/')
+        })
+        .catch(err => console.log(err))
+    }
+  })
 })
 
 //登出
