@@ -53,8 +53,11 @@ router.post('/register', (req, res) => {
 })
 
 //登出
-router.get('logout', (req, res) => {
-  res.get('logout')
+router.get('/logout', (req, res) => {
+
+  //執行 Passport 提供的 req.logout() 這個函數來清除 server的session，同時讓browser的session失效
+  req.logout()
+  res.redirect('/users/login')
 })
 
 module.exports = router
