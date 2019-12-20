@@ -2,8 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
 
+//auth.js裡面authenticated物件
+const { authenticated } = require('../config/auth')
+
 //首頁
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
 
   Restaurant.find((err, restaurants) => {
     if (err) return console.log(err)

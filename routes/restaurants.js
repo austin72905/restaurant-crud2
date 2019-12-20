@@ -2,18 +2,21 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
 
+//auth.js裡面authenticated物件
+const { authenticated } = require('../config/auth')
+
 //列出全部restaurant
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   res.redirect('/')
 })
 
 //新增restaurant 的頁面
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new')
 })
 
 //新增restaurant  -- >到 '列出全部restaurant的頁面'
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
 
   //在new.hbs新增時，存入mongodb
   const restaurant = new Restaurant({
@@ -34,7 +37,7 @@ router.post('/', (req, res) => {
 })
 
 //顯示detail 的頁面
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, detail) => {
     if (err) return console.log(err)
     return res.render('detail', { detail })
@@ -43,7 +46,7 @@ router.get('/:id', (req, res) => {
 })
 
 //修改restaurant 的頁面
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
     return res.render('edit', { restaurant })
@@ -53,7 +56,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 //修改restaurant
-router.put('/:id/edit', (req, res) => {
+router.put('/:id/edit', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
 
@@ -78,7 +81,7 @@ router.put('/:id/edit', (req, res) => {
 
 
 //刪除restaurant
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
     restaurant.remove(err => {
@@ -91,7 +94,7 @@ router.delete('/:id/delete', (req, res) => {
 
 //set search route
 router.get(
-  '/search', (req, res) => {
+  '/search', authenticated, (req, res) => {
 
     Restaurant.find((err, restaurants) => {
 
@@ -111,7 +114,7 @@ router.get(
 )
 
 router.get(
-  '/sort/:sort', (req, res) => {
+  '/sort/:sort', authenticated, (req, res) => {
 
     const sort = req.params.sort
     Restaurant.find({})
