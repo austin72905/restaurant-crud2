@@ -155,9 +155,16 @@ form {
   width:12px;
   height:12px
 }
-.btn-outline-info{
+
+.btn-create{
   position: absolute;
   right: 150px;
+  top:10px;
+}
+
+.btn-logout{
+  position: absolute;
+  right: 80px;
   top:10px;
 }
 

@@ -32,9 +32,14 @@
           我的餐廳清單
         </a>
 
+
+        {{#if isAuthenticated}}
         <form action="/restaurants/new" method="GET">
-          <button type="submit" class="btn btn-outline-info">新增餐廳</button>
+          <button type="submit" class="btn btn-outline-info btn-create">新增餐廳</button>
         </form>
+
+
+        {{/if}}
 
       </div>
 
