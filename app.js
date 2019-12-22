@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 app.use(express.static('public'))
 
 //連線到mongodb
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 const db = mongoose.connection
 db.on('error', () => {
@@ -63,6 +63,8 @@ app.use('/', require('./routes/homes'))
 app.use('/restaurants', require('./routes/restaurants'))
 
 app.use('/users', require('./routes/users'))
+
+app.use('/search', require('./routes/search'))
 
 
 

@@ -8,10 +8,11 @@ const { authenticated } = require('../config/auth')
 //首頁
 router.get('/', authenticated, (req, res) => {
 
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.log(err)
-    res.render('index', { restaurants })
-  })
+  Restaurant.find({ userId: req.user._id })
+    .exec((err, restaurants) => {
+      if (err) return console.log(err)
+      res.render('index', { restaurants })
+    })
 
 })
 

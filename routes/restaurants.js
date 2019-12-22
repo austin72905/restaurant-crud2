@@ -26,7 +26,10 @@ router.post('/', authenticated, (req, res) => {
     image: req.body.image,
     location: req.body.location,
     phone: req.body.phone,
-    description: req.body.description
+    description: req.body.description,
+
+    //建立關聯
+    userId: req.user._id
   })
 
   restaurant.save((err) => {
@@ -38,7 +41,7 @@ router.post('/', authenticated, (req, res) => {
 
 //顯示detail 的頁面
 router.get('/:id', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, detail) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, detail) => {
     if (err) return console.log(err)
     return res.render('detail', { detail })
   })
@@ -47,7 +50,7 @@ router.get('/:id', authenticated, (req, res) => {
 
 //修改restaurant 的頁面
 router.get('/:id/edit', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.log(err)
     return res.render('edit', { restaurant })
   })
@@ -57,7 +60,7 @@ router.get('/:id/edit', authenticated, (req, res) => {
 
 //修改restaurant
 router.put('/:id/edit', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.log(err)
 
     restaurant.name = req.body.name
@@ -82,7 +85,7 @@ router.put('/:id/edit', authenticated, (req, res) => {
 
 //刪除restaurant
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.log(err)
     restaurant.remove(err => {
       if (err) return console.log(err)
@@ -92,32 +95,13 @@ router.delete('/:id/delete', authenticated, (req, res) => {
 })
 
 
-//set search route
-router.get(
-  '/search', authenticated, (req, res) => {
 
-    Restaurant.find((err, restaurants) => {
-
-      if (err) return console.log(err)
-
-      const search = restaurants.filter(
-
-        restaurant => restaurant.name.toLowerCase().includes(req.query.keyword.toLowerCase())
-
-      )
-
-      res.render('index', { restaurants: search, keyword: req.query.keyword })
-    })
-
-
-  }
-)
 
 router.get(
   '/sort/:sort', authenticated, (req, res) => {
 
     const sort = req.params.sort
-    Restaurant.find({})
+    Restaurant.find({ userId: req.user._id })
       .sort({ rating: `${sort}` })
       .exec((err, restaurants) => {
 
