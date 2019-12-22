@@ -7,6 +7,12 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
 
+//判別開發環境，本地還線上
+if (process.env.NODE_ENV !== 'production') {        // 如果不是 production 模式
+  require('dotenv').config()                        // 使用 dotenv 讀取 .env 檔案
+}
+
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
@@ -65,6 +71,8 @@ app.use('/restaurants', require('./routes/restaurants'))
 app.use('/users', require('./routes/users'))
 
 app.use('/search', require('./routes/search'))
+
+app.use('/auth', require('./routes/auths'))
 
 
 
