@@ -6,6 +6,7 @@ module.exports = {
 
       return next()
     }
+
     res.redirect('/users/login')
   }
 }
