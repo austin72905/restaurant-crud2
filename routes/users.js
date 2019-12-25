@@ -14,19 +14,11 @@ router.post('/login', (req, res, next) => {
   //res.send('login')
 
 
-
   passport.authenticate('local', {
 
     successRedirect: '/',
     failureRedirect: '/users/login',
   })(req, res, next)
-
-
-
-
-
-
-
 
 })
 
