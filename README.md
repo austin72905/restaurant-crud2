@@ -5,7 +5,7 @@
 ## 下載專案
 
    ```
-   git clone https://github.com/austin72905/restaurant-crud.git
+   git clone https://github.com/austin72905/restaurant-crud2.git
    ```
 ## 安裝npm
 
